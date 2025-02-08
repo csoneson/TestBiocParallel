@@ -1,0 +1,27 @@
+---
+title: "myvignette"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{myvignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(TestBiocParallel)
+```
+
+```{r}
+myfun(BPPARAM = BiocParallel::SerialParam(), verbose = TRUE)
+myfun(BPPARAM = BiocParallel::SerialParam(), verbose = FALSE)
+myfun(BPPARAM = BiocParallel::MulticoreParam(workers = 2L), verbose = TRUE)
+myfun(BPPARAM = BiocParallel::MulticoreParam(workers = 2L), verbose = FALSE)
+```
+
